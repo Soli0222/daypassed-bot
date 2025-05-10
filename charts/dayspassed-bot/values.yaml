@@ -6,7 +6,7 @@ image:
   repository: ghcr.io/soli0222/daypassed-bot # IMPORTANT: Change this to your image repository
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.0.0"
+  tag: "1.0.1"
 
 nameOverride: ""
 fullnameOverride: ""
