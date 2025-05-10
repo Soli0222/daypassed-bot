@@ -1,7 +1,7 @@
 # Build stage
 FROM golang:1.24-alpine AS builder
 WORKDIR /app
-COPY go.mod go.sum ./ 
+COPY go.mod ./ 
 # Ensure go.mod and go.sum are present if you have dependencies, otherwise remove this line or create empty ones.
 # For this simple script, they might not be strictly necessary if there are no external packages beyond standard library.
 # If you create go.mod: go mod init dayspassed-bot; go mod tidy
