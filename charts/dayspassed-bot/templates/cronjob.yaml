@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ include "dayspassed-bot.fullname" . }}
+  name: {{ include "daypassed-bot.fullname" . }}
   labels:
-    {{- include "dayspassed-bot.labels" . | nindent 4 }}
+    {{- include "daypassed-bot.labels" . | nindent 4 }}
 spec:
   schedule: {{ .Values.schedule | quote }}
   concurrencyPolicy: {{ .Values.concurrencyPolicy }}
@@ -12,7 +12,7 @@ spec:
       template:
         metadata:
           labels:
-            {{- include "dayspassed-bot.jobselectorLabels" . | nindent 12 }}
+            {{- include "daypassed-bot.jobselectorLabels" . | nindent 12 }}
         spec:
           restartPolicy: {{ .Values.restartPolicy }}
           containers:
@@ -32,7 +32,7 @@ spec:
                 - name: MK_TOKEN
                   valueFrom:
                     secretKeyRef:
-                      name: {{ include "dayspassed-bot.onepasswordItemName" . }}
+                      name: {{ include "daypassed-bot.onepasswordItemName" . }}
                       key: {{ .Values.onepassword.tokenFieldInItem | default "MK_TOKEN" }}
                 {{- else if .Values.existingSecret }}
                 - name: MK_TOKEN

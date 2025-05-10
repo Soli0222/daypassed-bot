@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ghcr.io/soli0222/dayspassed-bot:1.0.0 # Change to your image version
+    image: ghcr.io/soli0222/daypassed-bot:1.0.0 # Change to your image version
     environment:
       - SPECIFIC_DATE=2002-02-22 # Change to your specific date YYYY-MM-DD
       - MK_TOKEN=xxxxxxxxxxxxx # Replace with your actual token

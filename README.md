@@ -20,7 +20,7 @@
 
 *   **Bot本体**: Go言語 (`main.go`)
 *   **コンテナ化**: Docker (`Dockerfile`, `docker-compose.yaml`)
-*   **Kubernetesデプロイ**: Helm (`charts/dayspassed-bot/`)
+*   **Kubernetesデプロイ**: Helm (`charts/daypassed-bot/`)
 *   **CI/CD**: GitHub Actions (`.github/workflows/docker.yaml`)
 
 ## 必要なもの
@@ -37,7 +37,7 @@
 リポジトリのルートで以下のコマンドを実行してDockerイメージをビルドします。
 
 ```bash
-docker build -t dayspassed-bot .
+docker build -t daypassed-bot .
 ```
 
 GitHub Actionsにより、タグがプッシュされると自動的に`ghcr.io/${{ github.repository }}`にイメージがビルド・プッシュされます。
@@ -61,8 +61,8 @@ docker compose run --rm app
 
 Helmチャートを使用してKubernetesクラスタにデプロイできます。
 
-1.  `charts/dayspassed-bot/values.yaml` を環境に合わせて編集します。主な設定項目は以下の通りです。
-    *   `image.repository`: 使用するDockerイメージのリポジトリ (デフォルト: `ghcr.io/soli0222/dayspassed-bot`)
+1.  `charts/daypassed-bot/values.yaml` を環境に合わせて編集します。主な設定項目は以下の通りです。
+    *   `image.repository`: 使用するDockerイメージのリポジトリ (デフォルト: `ghcr.io/soli0222/daypassed-bot`)
     *   `image.tag`: 使用するDockerイメージのタグ
     *   `schedule`: CronJobの実行スケジュール (デフォルト: `0 0 * * *` - 毎日0時0分)
     *   `env.specificDate`: 経過日数を計算する基準日
@@ -79,10 +79,10 @@ Helmチャートを使用してKubernetesクラスタにデプロイできます
 
     ```bash
     # values.yaml を使用する場合
-    helm install <リリース名> ./charts/dayspassed-bot
+    helm install <リリース名> ./charts/daypassed-bot
 
     # カスタム設定ファイルを使用する場合 (例: values.polester.yaml)
-    helm install <リリース名> ./charts/dayspassed-bot -f ./charts/dayspassed-bot/values.polester.yaml
+    helm install <リリース名> ./charts/daypassed-bot -f ./charts/daypassed-bot/values.polester.yaml
     ```
 
 ## 設定項目
@@ -98,7 +98,7 @@ Bot (`main.go`) は以下の環境変数を参照します。
 
 ### Helmチャート (`values.yaml`)
 
-Helmチャートでは、上記環境変数に加え、CronJobのスケジュール、リソース制限、1Password連携などの設定が可能です。詳細は `charts/dayspassed-bot/values.yaml` を参照してください。
+Helmチャートでは、上記環境変数に加え、CronJobのスケジュール、リソース制限、1Password連携などの設定が可能です。詳細は `charts/daypassed-bot/values.yaml` を参照してください。
 
 ## CI/CD
 
