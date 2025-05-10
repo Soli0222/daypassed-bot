@@ -1,0 +1,70 @@
+# Default values for dayspassed-bot chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: ghcr.io/soli0222/dayspassed-bot # IMPORTANT: Change this to your image repository
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "1.0.0"
+
+nameOverride: ""
+fullnameOverride: ""
+
+# CronJob schedule (runs daily at midnight)
+# Format: minute hour day-of-month month day-of-week
+# Example: "0 0 * * *" means at 00:00 every day
+schedule: "0 0 * * *"
+
+# Concurrency policy for the CronJob
+# Allow: Allows concurrent runs
+# Forbid: Forbids concurrent runs, skipping new ones if old one is still running
+# Replace: Cancels the currently running job and replaces it with a new one
+concurrencyPolicy: Forbid
+
+# Restart policy for pods created by the CronJob
+# Can be Never or OnFailure
+restartPolicy: OnFailure
+
+# Environment variables for the application
+# It's highly recommended to use Kubernetes Secrets for sensitive data like MK_TOKEN
+env:
+  specificDate: "2002-02-22" # Default specific date, format YYYY-MM-DD
+  # MK_TOKEN will be sourced from a secret (either existingSecret or via 1Password)
+  misskeyHost: "example.tld" # Hostname of your Misskey instance
+  tz: "Asia/Tokyo" # Timezone for the application and container
+  customText: "Hello, world!" # Custom text to be sent with the message
+
+# Configuration for 1Password integration
+onepassword:
+  enabled: false
+  # Path to the item in 1Password, e.g., "vaults/your-vault/items/your-item-title"
+  # or "vaults/your-vault/items/your-item-uuid"
+  itemPath: "vaults/Kubernetes/items/dayspassed-bot"
+  # Optional: Override the name of the OnePasswordItem Kubernetes resource.
+  # If not set, a name will be generated (e.g., {{ .Release.Name }}-dayspassed-bot-1password).
+  # This name is also used for the Kubernetes Secret created by the 1Password operator.
+  itemResourceNameOverride: ""
+  # The name of the field in your 1Password item that contains the token.
+  # The 1Password operator will create a Kubernetes Secret with this key.
+  tokenFieldInItem: "MK_TOKEN" # Ensure this field exists in your 1Password item
+
+# If not using 1Password integration, you can specify an existing Kubernetes secret for the token:
+existingSecret: "" # Name of an existing secret to use for MK_TOKEN, e.g., "misskey-token-secret"
+secretTokenKey: "MK_TOKEN" # The key within the existingSecret that holds the token
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

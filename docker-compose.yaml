@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghcr.io/soli0222/dayspassed-bot:1.0.0 # Change to your image version
+    environment:
+      - SPECIFIC_DATE=2002-02-22 # Change to your specific date YYYY-MM-DD
+      - MK_TOKEN=xxxxxxxxxxxxx # Replace with your actual token
+      - MISSKEY_HOST=example.tld # Replace with your Misskey host
+      - TZ=Asia/Tokyo # Set the timezone
+      - CUSTOM_TEXT=Hello, world! # Optional: Custom text to be sent
+    # For a one-off run like a cron job, you'd typically use `docker compose run --rm app`
+    # This docker-compose setup is more for defining the service for such a run.

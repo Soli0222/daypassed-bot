@@ -1,0 +1,52 @@
+# Go
+*.o
+*.a
+*.so
+_obj
+_test
+*.exe
+*.test
+*.prof
+*.out
+*.cov
+/vendor/
+/Godeps/
+daypassed-bot
+
+# Docker
+/.docker/
+docker-compose.override.yml
+
+# Helm
+/charts/*/charts
+/charts/*/Chart.lock
+/charts/*/requirements.lock
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# IDE
+.idea/
+*.swp
+*.swo
+.vscode/
+*.sublime-workspace
+
+# Build
+/bin/
+/dist/
+
+# Environment
+.env
+.envrc

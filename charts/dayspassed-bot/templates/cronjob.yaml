@@ -1,0 +1,62 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "dayspassed-bot.fullname" . }}
+  labels:
+    {{- include "dayspassed-bot.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.schedule | quote }}
+  concurrencyPolicy: {{ .Values.concurrencyPolicy }}
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            {{- include "dayspassed-bot.jobselectorLabels" . | nindent 12 }}
+        spec:
+          restartPolicy: {{ .Values.restartPolicy }}
+          containers:
+            - name: {{ .Chart.Name }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              env:
+                - name: SPECIFIC_DATE
+                  value: {{ .Values.env.specificDate | quote }}
+                - name: MISSKEY_HOST
+                  value: {{ .Values.env.misskeyHost | quote }}
+                - name: TZ
+                  value: {{ .Values.env.tz | quote }}
+                - name: CUSTOM_TEXT
+                  value: {{ .Values.env.customText | quote }}
+                {{- if .Values.onepassword.enabled }}
+                - name: MK_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ include "dayspassed-bot.onepasswordItemName" . }}
+                      key: {{ .Values.onepassword.tokenFieldInItem | default "MK_TOKEN" }}
+                {{- else if .Values.existingSecret }}
+                - name: MK_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ .Values.existingSecret }}
+                      key: {{ .Values.secretTokenKey | default "MK_TOKEN" }}
+                {{- else }}
+                # MK_TOKEN is not configured. The application might fail.
+                # Consider adding a default or ensuring one of the above methods is used.
+                # For example, you could make the chart fail deployment if no token source is found:
+                {{- /* required "MK_TOKEN must be provided either via onepassword.enabled or existingSecret" "" */ -}}
+                {{- end }}
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
