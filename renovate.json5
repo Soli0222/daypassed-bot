@@ -20,6 +20,15 @@
       'security',
     ],
   },
+  customManagers: [
+    {
+      customType: 'regex',
+      fileMatch: ['go\\.mod$'],
+      matchStrings: ['go (?<currentValue>\\d+\\.\\d+\\.\\d+)\\n'],
+      depNameTemplate: 'golang',
+      datasourceTemplate: 'golang-version',
+    },
+  ],
   packageRules: [
     {
       matchManagers: [
@@ -40,7 +49,14 @@
         'docker-compose',
         'dockerfile',
       ],
+      matchDepNames: ['!golang'],
       commitMessageTopic: 'Docker {{depName}}',
+      automerge: false,
+    },
+    {
+      matchDepNames: ['golang'],
+      groupName: 'golang version',
+      commitMessageTopic: 'Go version',
       automerge: false,
     },
   ],
