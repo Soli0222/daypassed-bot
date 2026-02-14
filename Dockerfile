@@ -1,5 +1,5 @@
 # Build stage
-FROM golang:1.26-alpine AS builder
+FROM golang:1.26.0-alpine-3.23 AS builder
 WORKDIR /app
 COPY go.mod ./ 
 # Ensure go.mod and go.sum are present if you have dependencies, otherwise remove this line or create empty ones.
