@@ -42,7 +42,7 @@
         'gomod',
       ],
       commitMessageTopic: 'Go {{depName}}',
-      automerge: false,
+      automerge: true,
     },
     {
       matchManagers: [
@@ -51,13 +51,13 @@
       ],
       matchDepNames: ['!golang'],
       commitMessageTopic: 'Docker {{depName}}',
-      automerge: false,
+      automerge: true,
     },
     {
       matchDepNames: ['golang'],
       groupName: 'golang version',
       commitMessageTopic: 'Go version',
-      automerge: false,
+      automerge: true,
     },
   ],
 }
