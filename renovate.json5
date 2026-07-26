@@ -50,6 +50,7 @@
         'gomod',
       ],
       commitMessageTopic: 'Go {{depName}}',
+      semanticCommitType: 'fix',
       automerge: true,
     },
     {
@@ -61,6 +62,7 @@
         '!golang',
       ],
       commitMessageTopic: 'Docker {{depName}}',
+      semanticCommitType: 'fix',
       automerge: true,
     },
     {
