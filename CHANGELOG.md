@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/Soli0222/daypassed-bot/compare/v1.2.0...v1.2.1) (2026-08-08)
+
+
+### バグ修正・依存関係の更新
+
+* correct malformed golang builder image tag ([#61](https://github.com/Soli0222/daypassed-bot/issues/61)) ([b7dbd88](https://github.com/Soli0222/daypassed-bot/commit/b7dbd8895d40ce99cb3c0c91ea5aa075f7d0dd3d))
+
 ## [1.2.0](https://github.com/Soli0222/daypassed-bot/compare/v1.1.0...v1.2.0) (2026-08-08)
 
 
