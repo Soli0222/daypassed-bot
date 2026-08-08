@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/Soli0222/daypassed-bot/compare/v1.1.0...v1.2.0) (2026-08-08)
+
+
+### 新機能
+
+* publish helm chart as OCI artifact from this repo ([#59](https://github.com/Soli0222/daypassed-bot/issues/59)) ([e9f0346](https://github.com/Soli0222/daypassed-bot/commit/e9f034671e7b1ef28fa7222ede3d6b75b29e237e))
+
+
+### バグ修正・依存関係の更新
+
+* unpin daypassed-bot chart image tag from fixed 1.0.1 ([e9f0346](https://github.com/Soli0222/daypassed-bot/commit/e9f034671e7b1ef28fa7222ede3d6b75b29e237e))
+
 ## [1.1.0](https://github.com/Soli0222/daypassed-bot/compare/1.0.1...v1.1.0) (2026-07-29)
 
 
