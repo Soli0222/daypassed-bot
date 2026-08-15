@@ -4,5 +4,5 @@ description: A Helm chart for deploying the daypassed-bot as a Kubernetes CronJo
 type: application
 sources:
   - https://github.com/Soli0222/daypassed-bot
-version: 0.2.0
+version: 0.2.1
 appVersion: 1.3.0
