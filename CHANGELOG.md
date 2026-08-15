@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Soli0222/daypassed-bot/compare/v1.2.1...v1.3.0) (2026-08-14)
+
+
+### 新機能
+
+* **ci:** rebuild the release pipeline as a DAG on shared workflows ([#66](https://github.com/Soli0222/daypassed-bot/issues/66)) ([e8e66f6](https://github.com/Soli0222/daypassed-bot/commit/e8e66f603fe2f2dfb0f18eaa67589f2e17cbfd36))
+
 ## [1.2.1](https://github.com/Soli0222/daypassed-bot/compare/v1.2.0...v1.2.1) (2026-08-08)
 
 
