@@ -5,6 +5,7 @@
     'security:minimumReleaseAgeNpm',
     ':dependencyDashboard',
   ],
+  pinDigests: false,
   timezone: 'Asia/Tokyo',
   prConcurrentLimit: 20,
   prHourlyLimit: 10,
