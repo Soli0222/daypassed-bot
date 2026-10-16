@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/Soli0222/daypassed-bot/compare/v1.3.0...v1.3.1) (2026-10-16)
+
+
+### バグ修正・依存関係の更新
+
+* **ci:** restore Renovate status checks and surface errors ([#89](https://github.com/Soli0222/daypassed-bot/issues/89)) ([d49470d](https://github.com/Soli0222/daypassed-bot/commit/d49470d4c37cb96ab1402f15be01f0b3e83ee2c6))
+
 ## [1.3.0](https://github.com/Soli0222/daypassed-bot/compare/v1.2.1...v1.3.0) (2026-08-14)
 
 
