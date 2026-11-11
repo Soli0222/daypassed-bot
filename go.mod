@@ -1,3 +1,3 @@
 module github.com/soli0222/daypassed-bot
 
-go 1.27.3
+go 1.27.4
